@@ -13,7 +13,8 @@ app.get('/', (req, res) => {
   res.render('index', { restaurants: restaurantList.results })
 })
 
-// 搜尋字串清除多餘空白字串
+// 搜尋字串清除前後空白：若使用者輸入文字前後有多餘空白，利用trim()來優化文字
+// 搜尋條件：輸入店家名稱或是餐廳類別，都會找得到想要的餐廳
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim()
   const restaurants = restaurantList.results.filter((restaurant) => {
